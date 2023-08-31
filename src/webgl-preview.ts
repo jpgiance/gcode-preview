@@ -38,7 +38,7 @@ export class WebGLPreview {
   camera: PerspectiveCamera;
   renderer: WebGLRenderer;
   group: Group;
-  backgroundColor = 0xe0e0e0;
+  backgroundColor = 0x302e2e;
   travelColor = 0x990000;
   extrusionColor = 0x00ff00;
   topLayerColor?: number;
@@ -62,7 +62,11 @@ export class WebGLPreview {
   private disposables: { dispose(): void }[] = [];
 
   constructor(opts: GCodePreviewOptions) {
+    // Use passed in backgroundColor or default to existing color
+    const backgroundColor = opts.backgroundColor ? new Color(opts.backgroundColor) : new Color(this.backgroundColor);
+
     this.scene = new Scene();
+    this.scene.background = new Color(this.backgroundColor);
     this.canvas = opts.canvas;
     this.targetId = opts.targetId;
     // this.endLayer = opts.limit;
@@ -77,10 +81,9 @@ export class WebGLPreview {
     this.allowDragNDrop = opts.allowDragNDrop ?? this.allowDragNDrop;
     this.nonTravelmoves = opts.nonTravelMoves ?? this.nonTravelmoves;
 
-    // Use passed in backgroundColor or default to existing color
-    const backgroundColor = opts.backgroundColor ? new Color(opts.backgroundColor) : new Color(this.backgroundColor);
+
     
-    this.scene.background = backgroundColor;
+    
 
     console.info('Using THREE r' + REVISION);
     console.debug('opts', opts);
