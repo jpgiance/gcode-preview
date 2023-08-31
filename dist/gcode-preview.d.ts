@@ -78,6 +78,7 @@ declare type GCodePreviewOptions = {
     targetId?: string;
     topLayerColor?: number;
     lastSegmentColor?: number;
+    backgroundColor?: number;
     lineWidth?: number;
     buildVolume?: BuildVolume;
     initialCameraPosition?: number[];
