@@ -21,6 +21,7 @@ export type GCodePreviewOptions = {
   // limit?: number;
   topLayerColor?: number;
   lastSegmentColor?: number;
+  backgroundColor?: number;
   lineWidth?: number;
   buildVolume?: BuildVolume;
   initialCameraPosition?: number[];
@@ -62,7 +63,6 @@ export class WebGLPreview {
 
   constructor(opts: GCodePreviewOptions) {
     this.scene = new Scene();
-    this.scene.background = new Color(this.backgroundColor);
     this.canvas = opts.canvas;
     this.targetId = opts.targetId;
     // this.endLayer = opts.limit;
@@ -76,6 +76,11 @@ export class WebGLPreview {
     this.debug = opts.debug ?? this.debug;
     this.allowDragNDrop = opts.allowDragNDrop ?? this.allowDragNDrop;
     this.nonTravelmoves = opts.nonTravelMoves ?? this.nonTravelmoves;
+
+    // Use passed in backgroundColor or default to existing color
+    const backgroundColor = opts.backgroundColor ? new Color(opts.backgroundColor) : new Color(this.backgroundColor);
+    
+    this.scene.background = backgroundColor;
 
     console.info('Using THREE r' + REVISION);
     console.debug('opts', opts);
