@@ -275,6 +275,11 @@ export class WebGLPreview {
   drawBuildVolume(): void {
     this.scene.add( new GridHelper( this.buildVolume.x, 10, this.buildVolume.y, 10 ));
 
+    const planeGeometry = new THREE.PlaneGeometry(this.buildVolume.x, this.buildVolume.y);
+    const planeMaterial = new THREE.MeshBasicMaterial({ color: this.backgroundColor, side: THREE.DoubleSide });
+    const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+    this.scene.add(plane);
+
     const geometryBox = LineBox(
       this.buildVolume.x,
       this.buildVolume.z,
