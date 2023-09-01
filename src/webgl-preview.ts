@@ -5,7 +5,7 @@ import { LineGeometry } from 'three/examples/jsm/lines/LineGeometry';
 import { LineSegments2 } from 'three/examples/jsm/lines/LineSegments2';
 import { GridHelper } from './gridHelper';
 import { LineBox } from './lineBox';
-import THREE, { Scene, PerspectiveCamera, WebGLRenderer, Group, Color, REVISION, Fog, AxesHelper, Euler, BufferGeometry, Float32BufferAttribute, LineBasicMaterial, LineSegments } from 'three';
+import { Scene, PerspectiveCamera, WebGLRenderer, Group, Color, REVISION, Fog, AxesHelper, Euler, BufferGeometry, Float32BufferAttribute, LineBasicMaterial, LineSegments, PlaneGeometry, MeshBasicMaterial, Mesh, DoubleSide } from 'three';
 
 
 type RenderLayer = { extrusion: number[]; travel: number[]; z: number };
@@ -277,9 +277,9 @@ export class WebGLPreview {
     this.scene.add( new GridHelper( this.buildVolume.x, 20, this.buildVolume.y, 10 ));
 
     // Create a plane with blue color (0x0000FF)
-    const planeGeometry = new THREE.PlaneGeometry(this.buildVolume.x, this.buildVolume.y);
-    const planeMaterial = new THREE.MeshBasicMaterial({ color: 0x0000FF, side: THREE.DoubleSide });
-    const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+    const planeGeometry = new PlaneGeometry(this.buildVolume.x, this.buildVolume.y);
+    const planeMaterial = new MeshBasicMaterial({ color: 0x0000FF, side: DoubleSide });
+    const plane = new Mesh(planeGeometry, planeMaterial);
 
     // Place the plane at the correct position (at the bottom of the build volume)
     plane.rotation.x = Math.PI / 2; // Rotate to lay flat
