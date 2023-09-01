@@ -274,7 +274,7 @@ export class WebGLPreview {
   } 
 
   drawBuildVolume(): void {
-    this.scene.add( new GridHelper( this.buildVolume.x, 20, this.buildVolume.y, 10 ));
+    this.scene.add( new GridHelper( this.buildVolume.x, 10, this.buildVolume.y, 10 ));
 
     // Create a plane with blue color (0x0000FF)
     const planeGeometry = new PlaneGeometry(this.buildVolume.x, this.buildVolume.y);
@@ -283,13 +283,13 @@ export class WebGLPreview {
 
     // Place the plane at the correct position (at the bottom of the build volume)
     plane.rotation.x = Math.PI / 2; // Rotate to lay flat
-    this.scene.add(plane);
+    // this.scene.add(plane);
 
     const geometryBox = LineBox(
       this.buildVolume.x,
       this.buildVolume.z,
       this.buildVolume.y,
-      0x3327db);
+      0x888888);
 
     geometryBox.position.setY(this.buildVolume.z / 2);
     this.scene.add(geometryBox);
