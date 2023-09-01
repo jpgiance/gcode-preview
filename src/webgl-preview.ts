@@ -273,11 +273,15 @@ export class WebGLPreview {
   } 
 
   drawBuildVolume(): void {
-    this.scene.add( new GridHelper( this.buildVolume.x, 10, this.buildVolume.y, 10 ));
+    this.scene.add( new GridHelper( this.buildVolume.x, 20, this.buildVolume.y, 10 ));
 
+    // Create a plane with blue color (0x0000FF)
     const planeGeometry = new THREE.PlaneGeometry(this.buildVolume.x, this.buildVolume.y);
-    const planeMaterial = new THREE.MeshBasicMaterial({ color: this.backgroundColor, side: THREE.DoubleSide });
+    const planeMaterial = new THREE.MeshBasicMaterial({ color: 0x0000FF, side: THREE.DoubleSide });
     const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+
+    // Place the plane at the correct position (at the bottom of the build volume)
+    plane.rotation.x = Math.PI / 2; // Rotate to lay flat
     this.scene.add(plane);
 
     const geometryBox = LineBox(
