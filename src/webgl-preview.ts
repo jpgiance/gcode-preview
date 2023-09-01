@@ -67,7 +67,7 @@ export class WebGLPreview {
     const backgroundColor = opts.backgroundColor ? new Color(opts.backgroundColor) : new Color(this.backgroundColor);
 
     this.scene = new Scene();
-    this.scene.background = new Color(this.backgroundColor);
+    this.scene.background = backgroundColor;
     this.canvas = opts.canvas;
     this.targetId = opts.targetId;
     // this.endLayer = opts.limit;
