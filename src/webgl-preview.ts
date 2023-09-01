@@ -288,7 +288,7 @@ export class WebGLPreview {
       this.buildVolume.x,
       this.buildVolume.z,
       this.buildVolume.y,
-      0x888888);
+      0x3327db);
 
     geometryBox.position.setY(this.buildVolume.z / 2);
     this.scene.add(geometryBox);
