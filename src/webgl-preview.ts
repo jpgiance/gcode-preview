@@ -5,7 +5,8 @@ import { LineGeometry } from 'three/examples/jsm/lines/LineGeometry';
 import { LineSegments2 } from 'three/examples/jsm/lines/LineSegments2';
 import { GridHelper } from './gridHelper';
 import { LineBox } from './lineBox';
-import { Scene, PerspectiveCamera, WebGLRenderer, Group, Color, REVISION, Fog, AxesHelper, Euler, BufferGeometry, Float32BufferAttribute, LineBasicMaterial, LineSegments } from 'three';
+import THREE, { Scene, PerspectiveCamera, WebGLRenderer, Group, Color, REVISION, Fog, AxesHelper, Euler, BufferGeometry, Float32BufferAttribute, LineBasicMaterial, LineSegments } from 'three';
+
 
 type RenderLayer = { extrusion: number[]; travel: number[]; z: number };
 type Vector3 = { x: number; y: number; z: number; r: number; i: number; j: number };
